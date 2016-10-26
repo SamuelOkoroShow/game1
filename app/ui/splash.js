@@ -9,39 +9,33 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 
-export default class Home extends Component {
+import BackgroundScreen from './widgets/background';
+export default class Splash extends Component {
+
+  componentDidMount(){
+    setTimeout( () => this.props.navigator.replace({id:"home"}), 2000);
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <BackgroundScreen>
+          <Text style={styles.welcome}>Old Macdonald Had a Farm</Text>
+          <Text style={styles.instructions}>card swiping game</Text>
+      </BackgroundScreen>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    opacity: .8,
   },
   instructions: {
     textAlign: 'center',
