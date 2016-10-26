@@ -38,7 +38,7 @@ export default class Card extends Component {
   <Image style={styles.face} resizeMod="contain" source={Back} />
 
   {/* Back Side */}
-  <Image style={styles.face} resizeMod="contain" source={patterns[this.props.val]} />
+  <Image style={styles.face} resizeMod="contain" source={patterns[this.props.val - 1]} />
 
 </FlipCard>);
   }

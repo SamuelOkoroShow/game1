@@ -39,7 +39,7 @@ export default class GameManager {
   generateCards(){
     const { rows, columns } = this.boardDimensions;
     this.cardMatrix = new Array(rows).fill(new Array(columns));
-    for (let i = 0; i < Math.floor(rows * columns / 2); i++ ){
+    for (let i = 0; i < Math.floor((rows * columns / 2) + 1); i++ ){
       this.fillCardPair(i);
     }
   }
