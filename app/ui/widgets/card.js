@@ -9,29 +9,48 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  Image,
   View
-} from 'react-native';
 
+} from 'react-native';
+import FlipCard from 'react-native-flip-card'
+import Back from "../../assets/imgs/card.png"
+import pattern1 from "../../assets/imgs/pattern1.png"
+import pattern2 from "../../assets/imgs/pattern2.png"
+import pattern3 from "../../assets/imgs/pattern3.png"
+import pattern4 from "../../assets/imgs/pattern4.png"
+import pattern5 from "../../assets/imgs/pattern5.png"
+
+var patterns = [pattern1, pattern2, pattern3, pattern4, pattern5]
 export default class Card extends Component {
+  constructor(props){
+    super(props)
+    console.log(this.props)
+    
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
+      <FlipCard 
+      flipHorizontal={true}
+      flipVertical={false}
+      style={styles.face}>
+  {/* Face Side */}
+  <Image style={styles.face} resizeMod="contain" source={Back} />
+
+  {/* Back Side */}
+  <Image style={styles.face} resizeMod="contain" source={patterns[this.props.val]} />
+
+</FlipCard>);
   }
 }
 
 const styles = StyleSheet.create({
+  face:{
+    width:100,
+    height:150,
+    margin:5,
+    borderWidth:0
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

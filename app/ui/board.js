@@ -9,6 +9,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  ScrollView,
   View
 } from 'react-native';
 import BackgroundScreen from './widgets/background';
@@ -29,9 +30,9 @@ class Board extends Component {
         <Text style={styles.welcome}>
           {` Welcome to Level ${levelCount} `}
         </Text>
-        <View>
-          { cardMatrix.map(row => row.map(column => <Text>{ column }</Text>))}
-        </View>
+        <ScrollView horizontal={true} style={{flex:1}} contentContainerStyle={{flex:1, flexDirection:"row", flexWrap:'wrap'}}>
+          { cardMatrix.map(row => row.map(column => <Card val= {column} />))}
+        </ScrollView>
       </BackgroundScreen>
     );
   }
@@ -40,8 +41,8 @@ class Board extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    
+ 
     backgroundColor: '#F5FCFF',
   },
   welcome: {

@@ -40,11 +40,11 @@ export default class GameManager {
     const { rows, columns } = this.boardDimensions;
     this.cardMatrix = new Array(rows).fill(new Array(columns));
     for (let i = 0; i < Math.floor(rows * columns / 2); i++ ){
-      this.fillCardPair(`pair no ${i}`);
+      this.fillCardPair(i);
     }
   }
 
   startGame(){
-    this.levelCount = 1;
+    this.levelCount = 2;
   }
 }
