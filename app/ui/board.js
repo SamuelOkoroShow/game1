@@ -12,22 +12,26 @@ import {
   View
 } from 'react-native';
 import BackgroundScreen from './widgets/background';
+import Card from './widgets/card';
+
 import {observer} from 'mobx-react/native';
 
 class Board extends Component {
+
+  componentDidMount(){
+    this.props.gameManager.generateCards()
+  }
+
   render() {
-    const { cardMatrix: { rows, columns }, levelCount } = this.props.gameManager;
+    const { levelCount, cardMatrix } = this.props.gameManager;
     return (
       <BackgroundScreen style={styles.container}>
         <Text style={styles.welcome}>
           {` Welcome to Level ${levelCount} `}
         </Text>
-        <Text style={styles.instructions}>
-          { `rows: ${rows}`}
-        </Text>
-        <Text style={styles.instructions}>
-          { `columns: ${columns}`}
-        </Text>
+        <View>
+          { cardMatrix.map(row => row.map(column => <Text>{ column }</Text>))}
+        </View>
       </BackgroundScreen>
     );
   }
