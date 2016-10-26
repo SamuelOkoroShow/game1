@@ -10,12 +10,21 @@ import {
 import Button from './button';
 
 class GameMenu extends Component {
+  constructor(){
+    super();
+    this.startGame = this.startGame.bind(this);
+  }
+
+  startGame(){
+    this.props.gameManager.startGame();
+    this.props.navigator.push({id:"board"})
+  }
 
   render(){
     return (
       <View style={styles.container}>
           <Text style={styles.welcome}>Menu {this.props.gameManager.cardMatrix.rows }</Text>
-          <Button containerStyle={styles.buttonContainer} textStyle={styles.buttonText}>Start Game</Button>
+          <Button containerStyle={styles.buttonContainer} textStyle={styles.buttonText} onPress={ this.startGame }>Start Game</Button>
           <Button containerStyle={styles.buttonContainer} textStyle={styles.buttonText}>Choose Level</Button>
           <Button containerStyle={styles.buttonContainer} textStyle={styles.buttonText}>Settings</Button>
           <Button containerStyle={styles.buttonContainer} textStyle={styles.buttonText}>Exit</Button>

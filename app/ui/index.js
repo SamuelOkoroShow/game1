@@ -7,10 +7,12 @@ import {
 import GameManager from '../logic/gameManager';
 import Splash from './splash';
 import Home from './home';
+import Board from './board';
 
 const routes = {
   splash: Splash,
-  home: Home
+  home: Home,
+  board: Board
 };
 
 export default class Index extends Component {

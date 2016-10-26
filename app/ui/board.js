@@ -11,22 +11,24 @@ import {
   Text,
   View
 } from 'react-native';
+import BackgroundScreen from './widgets/background';
+import {observer} from 'mobx-react/native';
 
-export default class Board extends Component {
+class Board extends Component {
   render() {
+    const { cardMatrix: { rows, columns }, levelCount } = this.props.gameManager;
     return (
-      <View style={styles.container}>
+      <BackgroundScreen style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          {` Welcome to Level ${levelCount} `}
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+          { `rows: ${rows}`}
         </Text>
         <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+          { `columns: ${columns}`}
         </Text>
-      </View>
+      </BackgroundScreen>
     );
   }
 }
@@ -49,4 +51,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default observer(['gameManager'])(Board)
 

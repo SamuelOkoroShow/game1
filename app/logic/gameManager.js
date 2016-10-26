@@ -1,4 +1,4 @@
-import { extendObservable } from 'mobx';
+import { extendObservable, action } from 'mobx';
 
 export default class GameManager {
 
@@ -7,10 +7,16 @@ export default class GameManager {
       levelCount: 0,
       get cardMatrix(){
         return {
-          rows: this.levelCount + 2,
-          columns: this.levelCount + 2
+          rows: this.levelCount + 1,
+          columns: this.levelCount + 1
         }
       }
     });
+
+    this.startGame = action(this.startGame)
+  }
+
+  startGame(){
+    this.levelCount = 1;
   }
 }
