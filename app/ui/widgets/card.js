@@ -23,24 +23,21 @@ import pattern5 from "../../assets/imgs/pattern5.png"
 
 var patterns = [pattern1, pattern2, pattern3, pattern4, pattern5]
 export default class Card extends Component {
-  constructor(props){
-    super(props)
-    console.log(this.props)
-    
-  }
+
   render() {
+    console.log(this.props)
     return (
-      <FlipCard 
+      <FlipCard
       flipHorizontal={true}
       flipVertical={false}
+      flip={this.props.cardData.flipped}
+      onFlipped={ (isFlipped) => this.props.gameManager.flipCard({ isFlipped, ...this.props.cardData })}
       style={styles.face}>
-  {/* Face Side */}
-  <Image style={styles.face} resizeMod="contain" source={Back} />
-
-  {/* Back Side */}
-  <Image style={styles.face} resizeMod="contain" source={patterns[this.props.val - 1]} />
-
-</FlipCard>);
+        {/* Face Side */}
+        <Image style={styles.face} resizeMod="contain" source={Back} />
+        {/* Back Side */}
+        <Image style={styles.face} resizeMod="contain" source={patterns[this.props.cardData.id - 1]} />
+    </FlipCard>);
   }
 }
 

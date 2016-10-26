@@ -31,7 +31,7 @@ class Board extends Component {
           {` Welcome to Level ${levelCount} `}
         </Text>
         <ScrollView horizontal={true} style={{flex:1}} contentContainerStyle={{flex:1, flexDirection:"row", flexWrap:'wrap'}}>
-          { cardMatrix.map(row => row.map(column => <Card {...this.props} val= {column} />))}
+          { cardMatrix.map(row => row.map(cellData => <Card {...this.props } cardData={cellData} />))}
         </ScrollView>
       </BackgroundScreen>
     );
@@ -41,8 +41,8 @@ class Board extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
- 
+
+
     backgroundColor: '#F5FCFF',
   },
   welcome: {
